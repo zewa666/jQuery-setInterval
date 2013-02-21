@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+<head>
+	<title> jQuery setInterval </title>
+  <script src="jquery-1.9.1.min.js"></script>
+  <script src="jquery.setInterval.js"></script>
+  <script type="text/javascript">
+    (function( $ ){
+      // simple counter
+      var myCounter = 0;
+      
+      $.setInterval(function(){  // use anon delegate or existing function as delegate
+        $('#counterDisplay').html(myCounter++);
+      }, 500, function() {
+        return (myCounter > 10) ? true : false;
+      }, function() {
+        $('#counterDisplay').html("setInterval was stopped due to breakCondition!");
+      });
+      
+    })( jQuery );
+  </script>
+  <style type="text/css">
+    .container {
+      width: 200px;
+      height: 50px;
+      margin:0 auto;
+    }
+    
+    #counterDisplay {
+      margin-top: 50px;
+      background-color: #eee;
+      text-align: center;
+      font-size: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <p id="counterDisplay">&nbsp;</p>
+  </div>
+</body>
+</html>
